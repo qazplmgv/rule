@@ -1,0 +1,131 @@
+[general] 
+# > 不用处理的
+excluded_routes= 192.168.0.0/16, 172.16.0.0/12, 100.64.0.0/10, 10.0.0.0/8
+# > 不使用fake ip方式
+dns_exclusion_list = *.cmpassport.com, *.jegotrip.com.cn, *.icitymobile.mobi, id6.me
+# > udp名单
+udp_whitelist=53, 443, 80-427, 444-65535
+# > udp名单或未注名节点走向
+fallback_udp_policy=direct
+# > 自动回复
+icmp_auto_reply=true
+# > 网络检查
+network_check_url=http://baidu.com
+# > 节点测速网站
+server_check_url=http://www.google.com/generate_204
+# > 节点延迟超时时间
+server_check_timeout = 1300
+# > 无线自动切换
+#running_mode_trigger=filter,filter, wifi1:all_direct, wifi2: all_direct
+# > 指定无线只有task工作
+;ssid_suspended_list = wifi1
+# > 关联配置图标
+profile_img_url =https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Quantumult_X.png
+# > 换请求UA
+server_check_user_agent= Mozilla/5.0 (iPhone; CPU iPhone OS 14_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.3 Mobile/15E148 Safari/604.1
+doh_user_agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36
+# > 节点名称显示
+#geo_location_checker=disabled
+#geo_location_checker=http://ip-api.com/json/?lang=zh-CN, https://raw.githubusercontent.com/KOP-XIAO/QuantumultX/master/Scripts/IP_API.js
+geo_location_checker=http://ip-api.com/json/?lang=zh-CN, https://raw.githubusercontent.com/Orz-3/Orz-3/master/QuantumultX/IP.js
+# > 解析器
+resource_parser_url= https://raw.githubusercontents.com/KOP-XIAO/QuantumultX/master/Scripts/resource-parser.js
+[dns]
+# > ipv6
+#no-ipv6
+# > 系统dns
+#no-syetem
+# > DOH
+# 阿里
+#doh-server=https://dns.alidns.com/dns-query
+doh-server=https://223.5.5.5/dns-query
+# 腾讯
+#doh-server=https://doh.pub/dns-query, excluded_ssids=SSID
+[policy]
+static=网易音乐, direct, resource-tag-regex=网易, img-url=https://raw.githubusercontent.com/code-shiromi/Quantumult-X-Resources/main/icons/cutepack/music.png
+static=全球媒体, server-tag-regex=俄|美|日|(?i)ru|us|jp|russia|states|american|japan, img-url=https://raw.githubusercontent.com/Springsu313/quantumult/main/icon/3800024.png
+static=全国媒体, direct, server-tag-regex=港|台|(?i)hk|tw|hong|taiwan, img-url=https://raw.githubusercontent.com/Springsu313/quantumult/main/icon/3698156.png
+static=即时通讯, server-tag-regex=美|(?i)us|states|american, img-url=https://raw.githubusercontent.com/Springsu313/quantumult/main/icon/social-media.png
+static=苹果服务, direct, server-tag-regex=港|(?i)hk|hong, img-url=https://raw.githubusercontent.com/Springsu313/quantumult/main/icon/apple.png
+static=谷歌服务, server-tag-regex=美|(?i)us|states|american, img-url=https://raw.githubusercontent.com/code-shiromi/Quantumult-X-Resources/main/icons/cutepack/chrome.png
+static=全国服务, direct, server-tag-regex=(?=.*(回国|免流|端口|绿通|广停|电信|80|403|(?i)china))^((?!(港|台|日|韩|新|美)).)*$, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/China.png
+static=全球服务, server-tag-regex=^((?!(回国|华)).)*$, img-url=https://raw.githubusercontent.com/Springsu313/quantumult/main/icon/www.png
+[server_local]
+[server_remote]
+https://raw.githubusercontents.com/I-am-R-E/QuantumultX/main/AgentNode/NeteaseMusicUnlock.list#checkurl=http://interface3.music.163.com, tag=网易云1, img-url=music.note.system, update-interval=-1, opt-parser=true, enabled=true
+https://raw.githubusercontent.com/nameking77/Qx/main/music/wyy.txt#checkurl=http://interface3.music.163.com, tag=网易云2, img-url=music.note.system, update-interval=-1, opt-parser=true, enabled=true
+[filter_local]
+host-keyword, pikpak, 全球服务
+host, raw.githubusercontent.com, 全球服务
+# > 搜狗输入法
+host-keyword, business-cdn.shouji.sogou.com, reject
+host-keyword, huichuan-mc.sm.cn, reject
+host-keyword, knockout, reject
+ip-cidr, 203.107.1.1/24, reject
+final, 全球服务
+[filter_remote]
+https://raw.githubusercontent.com/28413761/QX/main/fenliu.list, tag=张军本军, force-policy=reject, update-interval=-1, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Lan/Lan.list, tag=局域网, force-policy=direct, update-interval=-1, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/GitHub/GitHub.list, tag=GitHub, force-policy=全球服务, update-interval=-1, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/NetEaseMusic/NetEaseMusic.list, tag=网易云音乐, force-policy=direct, update-interval=-1, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Netflix/Netflix.list, tag=奈飞, force-policy=全球媒体, update-interval=-1, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/TikTok/TikTok.list, tag=TikTok, force-policy=全球媒体, update-interval=-1, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/YouTube/YouTube.list, tag=油管视频, force-policy=全球媒体, update-interval=-1, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Spotify/Spotify.list, tag=声田音乐, force-policy=全球媒体, update-interval=-1, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/GlobalMedia/GlobalMedia.list, tag=全球媒体, force-policy=全球媒体, update-interval=-1, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Youku/Youku.list, tag=优酷, force-policy=全国媒体, update-interval=-1, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/iQIYI/iQIYI.list, tag=爱奇艺, force-policy=全国媒体, update-interval=-1, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/TencentVideo/TencentVideo.list, tag=腾讯视频, force-policy=全国媒体, update-interval=-1, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/BiliBili/BiliBili.list, tag=哔哩哔哩, force-policy=全国媒体, update-interval=-1, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/ChinaMedia/ChinaMedia.list, tag=全国媒体, force-policy=全国媒体, update-interval=-1, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Twitter/Twitter.list, tag=推特, force-policy=即时通讯, update-interval=-1, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Telegram/Telegram.list, tag=电报, force-policy=即时通讯, update-interval=-1, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/TelegramUS/TelegramUS.list, tag=电报美国 DC1/3, force-policy=即时通讯, update-interval=-1, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/TelegramNL/TelegramNL.list, tag=电报荷兰 DC2/4, force-policy=即时通讯, update-interval=-1, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/TelegramSG/TelegramSG.list, tag=电报新加坡 DC5, force-policy=即时通讯, update-interval=-1, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/iCloud/iCloud.list, tag=苹果云盘, force-policy=苹果服务, update-interval=-1, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/AppStore/AppStore.list, tag=苹果商店, force-policy=苹果服务, update-interval=-1, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Apple/Apple.list, tag=苹果服务, force-policy=苹果服务, update-interval=-1, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/GoogleDrive/GoogleDrive.list, tag=谷歌网盘, force-policy=谷歌服务, update-interval=-1, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/GoogleVoice/GoogleVoice.list, tag=谷歌语音, force-policy=谷歌服务, update-interval=-1, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Google/Google.list, tag=谷歌服务, force-policy=谷歌服务, update-interval=-1, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/JingDong/JingDong.list, tag=京东, force-policy=全国服务, update-interval=-1, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Pinduoduo/Pinduoduo.list, tag=拼多多, force-policy=全国服务, update-interval=-1, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Alibaba/Alibaba.list, tag=阿里巴巴, force-policy=全国服务, update-interval=-1, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Baidu/Baidu.list, tag=百度服务, force-policy=全国服务, update-interval=-1, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Tencent/Tencent.list, tag=腾讯服务, force-policy=全国服务, update-interval=-1, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/qazplmgv/rule/main/geoip-cn, tag=Geoip CN, force-policy=全国服务, update-interval=-1, opt-parser=false, enabled=true
+[rewrite_local]
+^https?:\/\/sub\.store url script-analyze-echo-response https://raw.githubusercontent.com/Peng-YM/Sub-Store/master/backend/sub-store.min.js
+[rewrite_remote]
+https://raw.githubusercontent.com/app2smile/rules/master/module/zhihu.conf, tag=知乎去广告, update-interval=-1, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/app2smile/rules/master/module/tieba-qx.conf, tag=贴吧去广告, update-interval=-1, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/zqzess/rule_for_quantumultX/master/QuantumultX/rewrite/baiduAd.qxrewrite, tag=百度系去广告, update-interval=-1, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/app2smile/rules/master/module/bilibili-qx.conf, tag=哔哩哔哩去广告, update-interval=-1, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Rewrite/AdBlock/Bilibili.conf, tag=哔哩哔哩增强, update-interval=-1, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/chavyleung/scripts/master/box/rewrite/boxjs.rewrite.quanx.conf, tag=BoxJS, update-interval=-1, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/DualSubs/DualSubs/main/qxrewrite/DualSubs.qxrewrite, tag=双语字幕, update-interval=-1, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Rewrite/UnlockVip/ParseVideo.conf, tag=视频解析, update-interval=-1, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Bili_Auto_Regions.js, tag=哔哩哔哩切换, update-interval=-1, opt-parser=true, enabled=true
+https://raw.githubusercontent.com/qazplmgv/rule/main/All-In-One-Search, tag=All-In-One-Search, update-interval=-1, opt-parser=true, enabled=true
+https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/TestFlightDownload.conf, tag=解除TestFlight限制, update-interval=-1, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Rewrite/Function/Bilibili_CC.conf, tag=哔哩哔哩繁体转简体, update-interval=-1, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/Semporia/TikTok-Unlock/master/Quantumult%20X/TikTok-JP.conf, tag=TikTok JP, update-interval=-1, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/app2smile/rules/master/module/spotify.conf, tag=部分解锁声田premium, update-interval=-1, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/Js.conf, tag=野比, update-interval=-1, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/28413761/QX/main/chongxie.txt, tag=张军本军, update-interval=-1, opt-parser=true, enabled=true
+[task_local]
+* */1 * * * https://raw.githubusercontent.com/unknowntokyo/surge-list/master/X/dns-clear-cache.js, tag=DNS刷新, img-url=tag.system, enabled=true
+event-interaction https://raw.githubusercontent.com/KOP-XIAO/QuantumultX/master/Scripts/geo_location.js, tag=节点地址, img-url=location.fill.viewfinder.system, enabled=true
+event-interaction https://raw.githubusercontent.com/KOP-XIAO/QuantumultX/master/Scripts/traffic-check.js, tag=策略流量, img-url=square.and.arrow.down.system, enabled=true
+event-interaction https://raw.githubusercontents.com/KOP-XIAO/QuantumultX/master/Scripts/streaming-ui-check.js, tag=媒体解锁, img-url=checkmark.seal.system, enabled=true
+event-interaction https://raw.githubusercontent.com/I-am-R-E/QuantumultX/main/TaskLocal/NeteaseMusicUnlockCheck.js, tag=网音解灰, img-url=music.quarternote.3.system, enabled=true
+[http_backend]
+https://raw.githubusercontent.com/chavyleung/scripts/master/box/chavy.boxjs.js, tag=chavy.boxjs  http://127.0.0.1:9999, path=^/, enabled=true
+[mitm]
+skip_validating_cert = true
+force_sni_domain_name = true
+hostname=sub.store, -buy.itunes.apple.com, -*.amemv.com, -*.snssdk.com, -www.google.com
+simple_cert_hostname=sub.store
+passphrase = 
+p12 = 
