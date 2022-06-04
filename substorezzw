@@ -37,9 +37,6 @@ for (let i in inputList) {
   countries[inputList[i]] = [outputList[i], 0];
 }
 const others = {
-  ★☆☆: '★☆☆',
-  ★★☆: '★★☆',
-  ★★★: '★★★',
   简单: '简单',
   标准: '标准',
   普通: '普通',
@@ -48,13 +45,6 @@ const others = {
   中继: '中继',
   高级: '高级',
   高速: '高速',
-  沪日: '上海转日本',
-  沪韩: '上海转韩国',
-  沪美: '上海转美国',
-  广港: '广州转香港',
-  深港: '深圳转香港',
-  莞港: '东莞转香港',  
-  广新: '广州转新加坡',
   原生: '原生',
   核心: '核心',
   边缘: '边缘',
@@ -81,9 +71,9 @@ const others = {
   媒体: '媒体',
   网飞: '奈飞',
   'Netflix': '奈飞',
-  '[Premium]': '[Premium]',
   'IPLC': '专线',
   'IEPL': '专线',
+  '[Premium]': '[Premium]',
 };
 
 const airport = ($arguments.airport == undefined) ? '' : decodeURI($arguments.airport);
