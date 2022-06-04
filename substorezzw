@@ -85,9 +85,6 @@ var others = {
   '[Premium]': '[Premium]',
   'IPLC': '专线',
   'IEPL': '专线',
-  '★☆☆': '★☆☆',
-  '★★☆': '★★☆',
-  '★★★': '★★★',
 };
 
 var additionalOthers = $arguments.others || '{}';
