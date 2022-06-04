@@ -37,6 +37,9 @@ for (let i in inputList) {
   countries[inputList[i]] = [outputList[i], 0];
 }
 const others = {
+  ★☆☆: '★☆☆',
+  ★★☆: '★★☆',
+  ★★★: '★★★',
   简单: '简单',
   标准: '标准',
   普通: '普通',
