@@ -74,9 +74,9 @@ const others = {
   媒体: '媒体',
   网飞: '奈飞',
   'Netflix': '奈飞',
+  '[Premium]': '[Premium]',
   'IPLC': '专线',
   'IEPL': '专线',
-  '[Premium]': '[Premium]',
 };
 
 const airport = ($arguments.airport == undefined) ? '' : decodeURI($arguments.airport);
